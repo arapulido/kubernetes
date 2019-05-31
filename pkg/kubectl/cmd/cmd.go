@@ -51,6 +51,7 @@ import (
 	"k8s.io/kubernetes/pkg/kubectl/cmd/explain"
 	"k8s.io/kubernetes/pkg/kubectl/cmd/expose"
 	"k8s.io/kubernetes/pkg/kubectl/cmd/get"
+	"k8s.io/kubernetes/pkg/kubectl/cmd/helloworld"
 	"k8s.io/kubernetes/pkg/kubectl/cmd/label"
 	"k8s.io/kubernetes/pkg/kubectl/cmd/logs"
 	"k8s.io/kubernetes/pkg/kubectl/cmd/options"
@@ -560,6 +561,7 @@ func NewKubectlCommand(in io.Reader, out, err io.Writer) *cobra.Command {
 
 	cmds.AddCommand(alpha)
 	cmds.AddCommand(cmdconfig.NewCmdConfig(f, clientcmd.NewDefaultPathOptions(), ioStreams))
+	cmds.AddCommand(helloworld.NewCmdHelloWorld(f, ioStreams))
 	cmds.AddCommand(plugin.NewCmdPlugin(f, ioStreams))
 	cmds.AddCommand(version.NewCmdVersion(f, ioStreams))
 	cmds.AddCommand(apiresources.NewCmdAPIVersions(f, ioStreams))
